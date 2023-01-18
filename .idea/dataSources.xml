@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="records" uuid="4eda1be1-58cd-4375-875e-a445007baa14">
+    <data-source source="LOCAL" name="records [2]" uuid="c39ab9ae-d287-4487-b8ca-b93ef5954ff2">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:D:\.master\LTW\Project\backend\records.sqlite</jdbc-url>
+      <jdbc-url>jdbc:sqlite:D:\.master\LTW\Money-traker\backend\records.sqlite</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
