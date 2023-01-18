@@ -49,3 +49,13 @@ def delete_deposit(deposit_id: int, user_id: int = Depends(auth_handler.auth_wra
     return {"message": "deleted successfully"}
 
 
+def get_total(user_id: int = Depends(auth_handler.auth_wrapper), db: Session = Depends(get_db)):
+    if user_id is None:
+        raise HTTPException(status_code=400, detail="Invalid token")
+
+    deposits = db.query(Deposit).filter(Deposit.user_id == user_id).all()
+    total = 0
+    for deposit in deposits:
+        total += deposit.amount
+
+    return {"total": total}

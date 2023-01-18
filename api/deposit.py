@@ -19,3 +19,8 @@ async def add_deposit(res: DepositOut = Depends(deposit_service.add_deposit)):
 @deposits.delete("/api/deposits/{deposit_id}", status_code=200)
 async def delete_deposit(res: dict = Depends(deposit_service.delete_deposit)):
     return res
+
+
+@deposits.get("/api/deposits/total", status_code=200)
+async def get_total(res: dict = Depends(deposit_service.get_total)):
+    return res
