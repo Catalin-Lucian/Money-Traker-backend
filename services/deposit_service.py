@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from api.auth import auth_handler
 from dto.models import UserRegister, UserLogin, DepositAdd, DepositOut
-from database.db_manager import SessionLocal, Deposit
+from database.db_manager import SessionLocal, Deposit, Operation
 
 
 def get_db():
@@ -39,6 +39,10 @@ def delete_deposit(deposit_id: int, user_id: int = Depends(auth_handler.auth_wra
     if user_id is None:
         raise HTTPException(status_code=400, detail="Invalid token")
 
+    # delete all operations for the deposit
+    db.query(Operation).filter(Operation.deposit_id == deposit_id).delete()
+
+    # delete the deposit
     db.query(Deposit).filter(Deposit.id == deposit_id).delete()
     db.commit()
 

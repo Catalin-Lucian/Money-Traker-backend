@@ -24,6 +24,9 @@ def get_operations(page: int, perPage: int, user_id: int = Depends(auth_handler.
     operations = db.query(Operation).filter(Operation.user_id == user_id).order_by(Operation.date.desc()).offset(
         (page - 1) * perPage).limit(perPage).all()
 
+    # get number of pages
+    nrPages = db.query(Operation).filter(Operation.user_id == user_id).count() // perPage + 1
+
     # turn the operations into OperationOut objects with the deposit name
     operations_out = []
     for operation in operations:
@@ -31,7 +34,8 @@ def get_operations(page: int, perPage: int, user_id: int = Depends(auth_handler.
         operations_out.append(OperationOut(id=operation.id, amount=operation.amount, date=operation.date,
                                            name=deposit.name, ico_name=''))
 
-    return operations_out
+    return { "operations": operations_out,
+             "nrPages": nrPages }
 
 
 def get_operation_by_id(deposit_id: int, page: int, perPage: int,
@@ -48,6 +52,12 @@ def get_operation_by_id(deposit_id: int, page: int, perPage: int,
         .order_by(Operation.date.desc()).offset(
         (page - 1) * perPage).limit(perPage).all()
 
+    # get number of pages
+    nrPages = db.query(Operation) \
+        .filter(Operation.user_id == user_id) \
+        .filter(Operation.deposit_id == deposit_id) \
+        .count() // perPage + 1
+
     # turn the operations into OperationOut objects with the deposit name
     operations_out = []
     for operation in operations:
@@ -55,7 +65,8 @@ def get_operation_by_id(deposit_id: int, page: int, perPage: int,
         operations_out.append(OperationOut(id=operation.id, amount=operation.amount, date=operation.date,
                                            name=deposit.name, ico_name=''))
 
-    return operations_out
+    return {"operations": operations_out,
+            "nrPages": nrPages}
 
 
 def add_operation(operationAdd: OperationAdd, user_id: int = Depends(auth_handler.auth_wrapper),
