@@ -51,10 +51,10 @@ You can also edit or delete existing operations by clicking on the respective bu
 
 ## Bibliography
 
-[FastAPI documentation](https://fastapi.tiangolo.com)
-[React documentation](https://reactjs.org)
-[SQLAlchemy documentation](https://docs.sqlalchemy.org/en/14/)
-[passlib documentation](https://passlib.readthedocs.io/en/stable/)
-[pyJWT documentation](https://pyjwt.readthedocs.io/en/latest/)
-[uvicorn documentation](https://www.uvicorn.org)
-[bcrypt documentation](https://pypi.org/project/bcrypt/)
+- [FastAPI documentation](https://fastapi.tiangolo.com)
+- [React documentation](https://reactjs.org)
+- [SQLAlchemy documentation](https://docs.sqlalchemy.org/en/14/)
+- [passlib documentation](https://passlib.readthedocs.io/en/stable/)
+- [pyJWT documentation](https://pyjwt.readthedocs.io/en/latest/)
+- [uvicorn documentation](https://www.uvicorn.org)
+- [bcrypt documentation](https://pypi.org/project/bcrypt/)
