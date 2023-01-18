@@ -33,3 +33,8 @@ class OperationOut(BaseModel):
     amount: float
     ico_name: str
     date: datetime
+
+
+class OperationAdd(BaseModel):
+    deposit_id: int
+    amount: float

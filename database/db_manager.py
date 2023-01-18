@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime, Boolean
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -48,5 +49,5 @@ class Operation(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     deposit_id = Column(Integer, ForeignKey("deposits.id"))
     amount = Column(Float)
-    date = Column(DateTime, default=datetime.utcnow)
+    date = Column(DateTime, default=datetime.now())
     optype = Column(String, default="unknown")

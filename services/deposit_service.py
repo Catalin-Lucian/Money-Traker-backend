@@ -43,3 +43,5 @@ def delete_deposit(deposit_id: int, user_id: int = Depends(auth_handler.auth_wra
     db.commit()
 
     return {"message": "deleted successfully"}
+
+
